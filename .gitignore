@@ -1,6 +1,7 @@
 .idea/
 __pycache__/
 old_DBs/
+imgs/
 
 *.py
 *.json
