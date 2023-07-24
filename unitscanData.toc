@@ -1,0 +1,16 @@
+## Interface: 011403
+## Title: unitscanData
+## Author: Cruccio
+## Notes: To show UI type /unitscanData. Database and simple UI built on top of unitscan.
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: CHECKBOX_GRID_STATE, unitscanData_DB_VERSION
+## Dependencies: unitscan
+loadData.lua
+localization/localization.core.lua
+localization/localization.de.lua
+localization/localization.en.lua
+database.lua
+functions.lua
+unitscanData.lua
+
