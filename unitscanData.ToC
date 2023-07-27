@@ -13,4 +13,5 @@ localization/localization.en.lua
 database.lua
 functions.lua
 unitscanData.lua
+AnimatedFrame.lua
 

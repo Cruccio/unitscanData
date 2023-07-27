@@ -114,11 +114,11 @@ end)
 
 -- checkBoxes
 for j=0,2 do
-for i=0,24 do
+for i=1,25 do
 	local index = i + j * 25;
 	local MyCheckButton = CreateFrame("CheckButton", "MyCheckButton" .. index, UnitscanDataMainUI, "ChatConfigCheckButtonTemplate");
 	MyCheckButton:SetSize(30, 30);
-	MyCheckButton:SetPoint("TOPLEFT", UnitscanDataMainUI, "TOPLEFT", 10 + j * 240, -36 -24 * (i+1));
+	MyCheckButton:SetPoint("TOPLEFT", UnitscanDataMainUI, "TOPLEFT", 10 + j * 240, -36 -24 * i);
 	MyCheckButton:SetScript("OnClick", 
   		function()
 			local CHECKBOX_GRID_STATE = getActiveGrid();

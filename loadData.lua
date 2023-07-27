@@ -2,7 +2,7 @@
 UNIT_SCAN_DATA = {}
 
 -- addons info
-UNIT_SCAN_DATA["unitscanData_DB_VERSION"] = "0.5"
+UNIT_SCAN_DATA["unitscanData_DB_VERSION"] = "0.6d"
 UNIT_SCAN_DATA["unitscanData_VERSION"] = "1.0.1"
 UNIT_SCAN_DATA["unitscan_SUGGESTED_VERSION"] = "v1.1.3 for 1.14.2"
 
