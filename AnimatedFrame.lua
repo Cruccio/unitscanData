@@ -1,3 +1,4 @@
+local _, L = ...;  -- use L["myString"] to localize "myString" (and add it in localization.<lang>.lua)
 
 SLASH_RELOADUI1 = "/rl"
 SlashCmdList.RELOADUI = ReloadUI
@@ -7,8 +8,10 @@ local format, math, pi, halfpi = format, math, math.pi, math.pi / 2
 local COLOUR_RED = "ffff0000"
 local COLOUR_GREEN = "ff00ff00"
 local COLOUR_YELLOW = "ffffff00"
+local COLOUR_BLUE = "ff5041fa"
 local gold_markup = CreateAtlasMarkup("nameplates-icon-elite-gold", 16, 16)
 local silver_markup = CreateAtlasMarkup("nameplates-icon-elite-silver", 16, 16)
+local skull_markup = CreateAtlasMarkup("DungeonSkull", 16, 16)
 local classification = {[1]=gold_markup .. " ELITE",
                         [2]=silver_markup .. " Rare ELITE",
                         [4]="Rare"}
@@ -25,7 +28,7 @@ function update3DView(checkboxId)
     if checkboxId == nil then
         return
     end
-    local checkbox = getActiveGrid()[tonumber(checkboxId)]
+    local checkbox = getActiveGrid()[checkboxId]
     local unit = BESTIARY[checkbox.id]
     ModelUI:SetDisplayInfo(unit.modelId)  -- sets the model to display. Note that unitId != modelId
     -- draw the lables in the MainFrameUI: they show some mob stats and info
@@ -38,11 +41,12 @@ function update3DView(checkboxId)
     local text = {}
     text[1] = "Reaction: |c" .. reaction[unit.react[1]] .. "H|r - |c" .. reaction[unit.react[2]] .. "A|r"
     text[2] = "Level range: |c" .. levelColor .. "[" .. unit.minLvl .. "-" .. unit.maxLvl .. "]|r"
+    if UnitLevel("player") < unit.maxLvl + 5 then text[2] = text[2] .. skull_markup end
     text[3] = "Type: " .. classification[checkbox.cls]
     text[4] = checkbox.text
     text[5] = ""
-    if unit.mana == nil then text[6] = "Mana: --" else text[6] = "Mana: " .. unit.mana end
-    if unit.hp == nil then text[7] = "HP: ??" else text[7] = "HP: " .. unit.hp  end
+    if unit.mana == nil then text[6] = "|c" .. COLOUR_BLUE .. "Mana: --|r" else text[6] = "|c" .. COLOUR_BLUE .. "Mana: " .. unit.mana .. "|r" end
+    if unit.hp == nil then text[7] = "|c" .. COLOUR_GREEN .. "HP: ??|r" else text[7] = "|c" .. COLOUR_GREEN .. "HP: " .. unit.hp .. "|r"  end
     text[8] = UNIT_TYPE[unit.typeId]
     -- rows starts from bottom -> row1 and 5 are the last one in the UI (row1 right, row5 left)
     for i=1, 8 do
@@ -98,16 +102,10 @@ end
 -- Set all ModelUI (created somewhere before) properties: it's the 3D model viewer
 ModelUI:RefreshUnit()
 ModelUI:SetPoint("TOP", MainFrameUI, "TOP", 0, 0)
-ModelUI:SetSize(312, 312)
+ModelUI:SetSize(310, 310)
 ModelUI:SetMovable(false)
 ModelUI:EnableMouse(true)
 ModelUI:EnableMouseWheel(true)
-
-
--- enables the ability on moving the 3d model
-MainFrameUI:SetScript("OnEvent", function(self, event, ...)
-    ModelUI[event](ModelUI, ...)
-end)
 
 
 -- this make the 3d model draggable
