@@ -1567,5 +1567,5 @@ REGIONS_TABLE = {
 	[1461]="Arathi Basin", 
 }
 
-UNIT_TYPE = {"Beast", "Dragonkin", "Demon", "Elemental", "Giant", "Undead", "Humanoid", "Critter", "Mechanical"}
+UNIT_TYPE = {L["Beast"], L["Dragonkin"], L["Demon"], L["Elemental"], L["Giant"], L["Undead"], L["Humanoid"], L["Critter"], L["Mechanical"]}
 

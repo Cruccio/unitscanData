@@ -1,5 +1,8 @@
 local _, L = ...;
 
+--SLASH_RELOADUI1 = "/rl"
+--SlashCmdList.RELOADUI = ReloadUI
+
 SLASH_UNITSCANDATA1= "/unitscanData";
 
 -- Handle slash commands

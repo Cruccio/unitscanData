@@ -1,8 +1,5 @@
 local _, L = ...;  -- use L["myString"] to localize "myString" (and add it in localization.<lang>.lua)
 
-SLASH_RELOADUI1 = "/rl"
-SlashCmdList.RELOADUI = ReloadUI
-
 -- shortcut variables, mixed stuff here
 local format, math, pi, halfpi = format, math, math.pi, math.pi / 2
 local COLOUR_RED = "ffff0000"
