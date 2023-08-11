@@ -9,3 +9,4 @@ releases/
 *.json
 *.txt
 
+id_to_npc.lua

@@ -1,15 +1,20 @@
 local _, L = ...;
 
---SLASH_RELOADUI1 = "/rl"
---SlashCmdList.RELOADUI = ReloadUI
+SLASH_RELOADUI1 = "/rl"
+SlashCmdList.RELOADUI = ReloadUI
+--/console scriptErrors 1
 
 SLASH_UNITSCANDATA1= "/unitscanData";
 
 -- Handle slash commands
 function SlashCmdList.UNITSCANDATA(msg)
+	if msg == "version" then
+		return UNIT_SCAN_DATA["unitscanData_VERSION"]
+	end
     local activeGrid = getActiveGrid()
     autoscan_verifyConsistency(activeGrid);
-    drawGrid(activeGrid);
+    local r = drawGrid(activeGrid);
+	enableToggles(r);
 	UnitscanDataMainUI:Show();
 end
 
@@ -47,7 +52,7 @@ InfoMessageFrame:AddMessage(getInfoText())
 local UnitscanDataMainUI = CreateFrame("Frame", "UnitscanDataMainUI", UIParent, "UIPanelDialogTemplate");
 UnitscanDataMainUI:SetClampedToScreen(true);
 UnitscanDataMainUI:SetFrameStrata("LOW");
-UnitscanDataMainUI:SetSize(810, 700);
+UnitscanDataMainUI:SetSize(750, 660);
 UnitscanDataMainUI:SetPoint("CENTER", UIParent, "CENTER", 20, 10);
 UnitscanDataMainUI:Show();
 if startHide then UnitscanDataMainUI:Hide() end
@@ -120,8 +125,8 @@ for j=0,2 do
 for i=1,25 do
 	local index = i + j * 25;
 	local MyCheckButton = CreateFrame("CheckButton", "MyCheckButton" .. index, UnitscanDataMainUI, "ChatConfigCheckButtonTemplate");
-	MyCheckButton:SetSize(30, 30);
-	MyCheckButton:SetPoint("TOPLEFT", UnitscanDataMainUI, "TOPLEFT", 10 + j * 240, -36 -24 * i);
+	MyCheckButton:SetSize(26, 26);
+	MyCheckButton:SetPoint("TOPLEFT", UnitscanDataMainUI, "TOPLEFT", 10 + j * 240, -36 -22 * i);
 	MyCheckButton:SetScript("OnClick", 
   		function()
 			local CHECKBOX_GRID_STATE = getActiveGrid();
@@ -133,6 +138,7 @@ for i=1,25 do
             end
   		end
 	);
+	_G["MyCheckButton" .. i .. 'Text']:SetFont(_G["MyCheckButton" .. i .. 'Text']:GetFont(), 11)
 end
 end
 

@@ -9,6 +9,7 @@ if GetLocale() == "enUS" then
              .. "\n\n\nUsage: check/unchek units you want to scan for. Feel free to report any issue."
              .. "\n\nUpdated for unitscan version: " .. UNIT_SCAN_DATA["unitscan_SUGGESTED_VERSION"];
     L["INFO_TEXT"] = text;
+    L["NO_CHECKBOX_DATA"] = "No data for your current region: move to another area"
 
     --enUS DO NOT LOCALIZED unit names! keys can already be used as plain text. This function can be left empty
 end

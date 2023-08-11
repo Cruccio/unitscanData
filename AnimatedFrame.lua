@@ -22,10 +22,10 @@ local ModelUI = CreateFrame("PlayerModel", nil, MainFrameUI)  -- the 3D model vi
 
 -- update the model viewer based on a specific element in che checkbox grid. checkboxId it's just the 1-index
 function update3DView(checkboxId)
-    if checkboxId == nil then
+    local checkbox = getActiveGrid()[checkboxId]
+    if checkbox == nil then
         return
     end
-    local checkbox = getActiveGrid()[checkboxId]
     local unit = BESTIARY[checkbox.id]
     ModelUI:SetDisplayInfo(unit.modelId)  -- sets the model to display. Note that unitId != modelId
     -- draw the lables in the MainFrameUI: they show some mob stats and info
@@ -36,7 +36,7 @@ function update3DView(checkboxId)
         levelColor = COLOUR_RED
     end
     local text = {}
-    text[1] = "Reaction: |c" .. reaction[unit.react[1]] .. "H|r - |c" .. reaction[unit.react[2]] .. "A|r"
+    text[1] = "Reaction: |c" .. reaction[unit.react[2]] .. "H|r - |c" .. reaction[unit.react[1]] .. "A|r"
     text[2] = "Level range: |c" .. levelColor .. "[" .. unit.minLvl .. "-" .. unit.maxLvl .. "]|r"
     if UnitLevel("player") < unit.maxLvl + 5 then text[2] = text[2] .. skull_markup end
     text[3] = "Type: " .. classification[checkbox.cls]
@@ -75,11 +75,11 @@ UnitscanDataMainUI:HookScript("OnHide", function() MainFrameUI:Hide() end)
 
 
 -- Set all MainFrameUI (created somewhere before) properties
-MainFrameUI:SetPoint("TOPLEFT", UnitscanDataMainUI, "TOPRIGHT", 0, 0)
+MainFrameUI:SetPoint("TOPLEFT", UnitscanDataMainUI, "TOPRIGHT", 0, -4)
 MainFrameUI:SetSize(312, 396)
 MainFrameUI:SetBackdrop({
-    bgFile = "Interface\\Addons\\AnimatedAddon\\WhiteLine",
-    edgeFile = "Interface\\Addons\\AnimatedAddon\\border",
+    bgFile = "Interface\\Addons\\unitscanData\\assets\\WhiteLine",
+    edgeFile = "Interface\\Addons\\unitscanData\\assets\\border",
 	edgeSize = 16,
 	insets = { left = 4, right = 4, top = 4, bottom = 4 },
 })

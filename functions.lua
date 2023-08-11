@@ -11,8 +11,11 @@ end
 -- returns the localized name of the player region location
 function getPlayerZoneLocalizedName()
     local mapID = C_Map.GetBestMapForUnit("player");
-    local mapname = C_Map.GetMapInfo(mapID).name;
-    return mapname;
+    if mapID == nil then print("mapID è nil") end
+    if mapID == nil then return getPlayerZoneNameId() end
+    local map = C_Map.GetMapInfo(mapID);
+    if map == nil or map.name == nil then return getPlayerZoneNameId() end
+    return map.name;
 end
 
 -- returns the internal checkbox and units status of the current region (player location)
@@ -22,35 +25,41 @@ function getActiveGrid()
     local r = allGridsState[zoneId]
     if r == nil then        -- build an empty state
         r = {}
-        r[0] = {}
-        r[0]["active"] = false
+        for i=1,75 do
+            r[i] = {}
+            r[i]["active"] = false
+        end
     end
     return r
 end
 
 -- draw/update the UI based on CHECKBOX_GRID_STATE: the internal checkbox and units status of a specific region
+-- returns true if something has been drawn
 function drawGrid(CHECKBOX_GRID_STATE)
-	for i, checkboxTable in pairs(CHECKBOX_GRID_STATE) do
-		local MyCheckButton = _G["MyCheckButton" .. i];
-		local GridTitleContainer = _G["TestAddonGridTitleContainer"];
-		local colour = "ff7efa02"
-		GridTitleContainer.Label:SetText(getPlayerZoneLocalizedName())
-        GridTitleContainer:SetSize(GridTitleContainer.Label:GetStringWidth(), 36);
-		if checkboxTable["active"] then
-		    if checkboxTable["cls"] == 2 then
-		        colour = "ffc2c1c0"
-		    end
-		    if checkboxTable["cls"] == 4 then
-		        colour = "ff595d63"
-		    end
-		    _G["MyCheckButton" .. i .. 'Text']:SetText("|c" .. colour .. checkboxTable["text"] .. "|r");
-			MyCheckButton:Show();
-		    MyCheckButton:SetChecked(checkboxTable["check"]);
-		else
-			MyCheckButton:Hide();
-		    MyCheckButton:SetChecked(false);
-		end
-	end
+    local allNonActive = true;
+    for i, checkboxTable in pairs(CHECKBOX_GRID_STATE) do
+        local MyCheckButton = _G["MyCheckButton" .. i];
+        local colour = "ff7efa02"
+        if checkboxTable["active"] then
+            allNonActive = false;
+            if checkboxTable["cls"] == 2 then  colour = "ffc2c1c0" end
+            if checkboxTable["cls"] == 4 then colour = "ff595d63" end
+            _G["MyCheckButton" .. i .. 'Text']:SetText("|c" .. colour .. checkboxTable["text"] .. "|r");
+            MyCheckButton:Show();
+            MyCheckButton:SetChecked(checkboxTable["check"]);
+        else
+            MyCheckButton:Hide();
+            MyCheckButton:SetChecked(false);
+        end
+    end
+    local GridTitleContainer = _G["TestAddonGridTitleContainer"];
+    if allNonActive then
+        GridTitleContainer.Label:SetText(L["NO_CHECKBOX_DATA"])
+    else
+        GridTitleContainer.Label:SetText(getPlayerZoneLocalizedName())
+    end
+    GridTitleContainer:SetSize(GridTitleContainer.Label:GetStringWidth(), 36);
+    return not allNonActive;
 end
 
 -- this script runs as soon the player changes region. It removes from unitscan all the units tracked
@@ -61,7 +70,8 @@ function onZoneChangeEvent(event)
         unitscan_removeAllFromGrid(_G["CHECKBOX_GRID_STATE"][UNIT_SCAN_DATA["LAST_REGION"]])
     end
     local activeGrid = getActiveGrid();
-    drawGrid(activeGrid);
+    local r = drawGrid(activeGrid);
+	enableToggles(r);
     unitscan_updateAllFromGrid(activeGrid);
     UNIT_SCAN_DATA["LAST_REGION"] = getPlayerZoneNameId();
 end
@@ -90,6 +100,7 @@ end
 -- a drawGrid() call to is needed after this function to visualize the new status
 function toggleToDefault()
     local zoneId = getPlayerZoneNameId();
+    if OUTPUT_TABLE[zoneId] == nil then return end
     _G["CHECKBOX_GRID_STATE"][zoneId] = nil
     _G["CHECKBOX_GRID_STATE"][zoneId] = {}
     for index, checkboxContent in pairs(OUTPUT_TABLE[zoneId]) do
@@ -103,6 +114,22 @@ end
 -- plain text shown in the info panel
 function getInfoText()
     return L.INFO_TEXT
+end
+
+
+-- enable/disable toggle buttons
+function enableToggles(enable)
+    if enable then
+        _G["TestAddonToggle1Button"]:Enable();
+        _G["TestAddonToggle2Button"]:Enable();
+        _G["TestAddonToggle4Button"]:Enable();
+        _G["TestAddonToDefaultButton"]:Enable();
+    else
+        _G["TestAddonToggle1Button"]:Disable();
+        _G["TestAddonToggle2Button"]:Disable();
+        _G["TestAddonToggle4Button"]:Disable();
+        _G["TestAddonToDefaultButton"]:Disable();
+    end
 end
 
 
