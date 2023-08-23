@@ -19,6 +19,19 @@ local UnitscanDataMainUI = _G["UnitscanDataMainUI"]  -- defined in unitscanData.
 local MainFrameUI = CreateFrame("Frame", nil, UnitscanDataMainUI, BackdropTemplateMixin and "BackdropTemplate")  -- container for the 3D model viewer
 local ModelUI = CreateFrame("PlayerModel", nil, MainFrameUI)  -- the 3D model viewer
 
+-- this is a stupid workaround 'cause I have no idea how to fix this: the first SetCreature(id) may not always work. Probably WoW wants
+-- to/has to cache the 3D models before rendering them.
+-- This function is called only on ZONE_CHANGED event and force the game to load the models.
+-- If anyone read this, pls tell me how to do it without this workaround function xDv
+function loadAllModel()
+    local grid = getActiveGrid();
+    for k, v in pairs(grid) do
+        if v["active"] then
+            ModelUI:SetCreature(v.id);
+        end
+    end
+    ModelUI:SetCreature(0);
+end
 
 -- update the model viewer based on a specific element in che checkbox grid. checkboxId it's just the 1-index
 function update3DView(checkboxId)
@@ -27,7 +40,7 @@ function update3DView(checkboxId)
         return
     end
     local unit = BESTIARY[checkbox.id]
-    ModelUI:SetDisplayInfo(unit.modelId)  -- sets the model to display. Note that unitId != modelId
+    ModelUI:SetCreature(checkbox.id)  -- sets the model to display. Note that unitId != modelId
     -- draw the lables in the MainFrameUI: they show some mob stats and info
     local levelColor = COLOUR_YELLOW
     if UnitLevel("player") > unit.maxLvl + 3 then
@@ -54,10 +67,11 @@ function update3DView(checkboxId)
             MainFrameUI["Label" .. i]:Show()
         end
     end
-    ModelUI:SetRotation(0)
-    ModelUI:SetPosition(0, 0, 0)
-    ModelUI:RefreshCamera()
-    ModelUI:SetCustomCamera(1)
+
+    --ModelUI:SetRotation(0)
+    --ModelUI:SetPosition(0, 0, 0)
+    --ModelUI:RefreshCamera()
+    --ModelUI:SetCustomCamera(1)
 end
 
 -- add callbacks for all CheckBox frames: on mouse enter checkbox area, update3DView(index) is called
@@ -159,3 +173,15 @@ end
 
 ModelUI:SetScript("OnMouseDown", OnMouseDown)
 ModelUI:SetScript("OnMouseUp", OnMouseUp)
+
+
+-- event registration
+--ModelUI:RegisterEvent("ZONE_CHANGED");
+--ModelUI:RegisterEvent("ZONE_CHANGED_INDOORS");
+ModelUI:RegisterEvent("ZONE_CHANGED_NEW_AREA");  -- per ora usiamo questa e vediamo se basta
+local function onAddonModel3DEvent(self, event, arg1, ...)
+    if event == "ZONE_CHANGED" or event == "ZONE_CHANGED_INDOORS" or event == "ZONE_CHANGED_NEW_AREA" then
+        loadAllModel();
+ 	end
+end
+ModelUI:SetScript("OnEvent", onAddonModel3DEvent);

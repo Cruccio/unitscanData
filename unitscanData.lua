@@ -1,7 +1,7 @@
 local _, L = ...;
 
-SLASH_RELOADUI1 = "/rl"
-SlashCmdList.RELOADUI = ReloadUI
+--SLASH_RELOADUI1 = "/rl"
+--SlashCmdList.RELOADUI = ReloadUI
 --/console scriptErrors 1
 
 SLASH_UNITSCANDATA1= "/unitscanData";
@@ -26,12 +26,14 @@ local startHide = true;
 
 -- ********** Creating UI (no xml, xD) **********
 
+--UIPanelDialogTemplate
 -- frame for showing addon INFO
 local InfoFrameUI = CreateFrame("Frame", "unitscanDataInfoFrameUI", UIParent, "UIPanelDialogTemplate");
+
 InfoFrameUI:SetClampedToScreen(true);
 InfoFrameUI:SetFrameStrata("DIALOG");
 InfoFrameUI:SetSize(236, 320);
-InfoFrameUI:SetPoint("CENTER", UIParent, "CENTER", 20, 10);
+InfoFrameUI:SetPoint("CENTER", UIParent, "CENTER");
 InfoFrameUI:Hide();
 InfoFrameUI.Label = InfoFrameUI:CreateFontString("Label", nil, "GameFontNormal");
 InfoFrameUI.Label:SetJustifyH("LEFT");
@@ -47,9 +49,13 @@ InfoMessageFrame:SetFontObject("GameFontNormal")
 InfoMessageFrame:SetFading(false)
 InfoMessageFrame:Show()
 InfoMessageFrame:AddMessage(getInfoText())
+local ExitButton = _G["unitscanDataInfoFrameUIClose"]
+ExitButton:SetPoint("TOPRIGHT", 1, 1);
+
 
 -- main UI frames
 local UnitscanDataMainUI = CreateFrame("Frame", "UnitscanDataMainUI", UIParent, "UIPanelDialogTemplate");
+
 UnitscanDataMainUI:SetClampedToScreen(true);
 UnitscanDataMainUI:SetFrameStrata("LOW");
 UnitscanDataMainUI:SetSize(750, 660);
@@ -72,6 +78,9 @@ unitscanDataInfoButton:SetPoint("TOPRIGHT", UnitscanDataMainUI, "TOPRIGHT", -26,
 unitscanDataInfoButton:SetScript("OnClick", function(self, arg1)
 	InfoFrameUI:Show();
 end)
+local ExitButton = _G["UnitscanDataMainUIClose"]
+ExitButton:SetPoint("TOPRIGHT", 1, 1);
+
 local GridTitleContainer = CreateFrame("Frame", "TestAddonGridTitleContainer", UnitscanDataMainUI)
 GridTitleContainer:SetPoint("TOP", UnitscanDataMainUI, "TOP", 0, -28);
 GridTitleContainer.Label = GridTitleContainer:CreateFontString("Label", nil, "ErrorFont")

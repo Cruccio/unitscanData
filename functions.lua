@@ -11,7 +11,6 @@ end
 -- returns the localized name of the player region location
 function getPlayerZoneLocalizedName()
     local mapID = C_Map.GetBestMapForUnit("player");
-    if mapID == nil then print("mapID è nil") end
     if mapID == nil then return getPlayerZoneNameId() end
     local map = C_Map.GetMapInfo(mapID);
     if map == nil or map.name == nil then return getPlayerZoneNameId() end
@@ -114,6 +113,17 @@ end
 -- plain text shown in the info panel
 function getInfoText()
     return L.INFO_TEXT
+end
+
+-- this function means something could be done better
+function getRegionId(region)
+    if region == nil then return nil end
+    for key, val in pairs(REGIONS_TABLE) do
+        if val == region then
+            return key
+        end
+    end
+    return nil
 end
 
 
