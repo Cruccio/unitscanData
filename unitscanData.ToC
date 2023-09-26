@@ -10,6 +10,13 @@ loadData.lua
 localization/localization.core.lua
 localization/localization.de.lua
 localization/localization.en.lua
+localization/localization.cn.lua
+localization/localization.es.lua
+localization/localization.fr.lua
+localization/localization.it.lua
+localization/localization.ko.lua
+localization/localization.pt.lua
+localization/localization.ru.lua
 mobs_location.lua
 database.lua
 functions.lua
