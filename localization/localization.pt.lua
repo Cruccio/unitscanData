@@ -10,7 +10,6 @@ if GetLocale() == "ptBR" then
              .. "\n\nUpdated for unitscan version: " .. UNIT_SCAN_DATA["unitscan_SUGGESTED_VERSION"];
     L["INFO_TEXT"] = text;
     L["NO_CHECKBOX_DATA"] = "Não há dados para a sua região atual: mude para outra área.";
-
     L["Beast"] = "Fera";
     L["Dragonkin"] = "Fera";
     L["Demon"] = "Demônio";
@@ -20,7 +19,6 @@ if GetLocale() == "ptBR" then
     L["Humanoid"] = "Humano";
     L["Critter"] = "Bicho";
     L["Mechanical"] = "Mecânico";
-
     L["Dreamtracker"] = "Rastreia-sonhos";
     L["Emerald Ooze"] = "Gosma Esmeralda";
     L["Gammerita"] = "Gammerita";

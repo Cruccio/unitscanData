@@ -157,7 +157,7 @@ UnitscanDataMainUI:RegisterEvent("ADDON_LOADED");
 --UnitscanDataMainUI:RegisterEvent("ZONE_CHANGED");
 --UnitscanDataMainUI:RegisterEvent("ZONE_CHANGED_INDOORS");
 UnitscanDataMainUI:RegisterEvent("ZONE_CHANGED_NEW_AREA");  -- per ora usiamo questa e vediamo se basta
-local function onAddonEvent(self, event, arg1, ...)
+local function onUnitscanDataEvent(self, event, arg1, ...)
 	if event == "ADDON_LOADED" and arg1 == "unitscanData" then
   		if _G["unitscanData_DB_VERSION"] == nil or _G["unitscanData_DB_VERSION"] ~= UNIT_SCAN_DATA["unitscanData_DB_VERSION"] then
    			loadDefaultData(); -- This is the first time this addon is loaded; initialize the count to 0.
@@ -167,6 +167,27 @@ local function onAddonEvent(self, event, arg1, ...)
     if event == "ZONE_CHANGED" or event == "ZONE_CHANGED_INDOORS" or event == "ZONE_CHANGED_NEW_AREA" then
         onZoneChangeEvent(event);
  	end
+	--if event == "ESCAPE" then
+	--	UnitscanDataMainUI:SetPropagateKeyboardInput(false);
+	--	UnitscanDataMainUI:Hide();
+	--end
 end
-UnitscanDataMainUI:SetScript("OnEvent", onAddonEvent);
+UnitscanDataMainUI:SetScript("OnEvent", onUnitscanDataEvent);
 
+tinsert(UISpecialFrames, UnitscanDataMainUI:GetName());
+
+--[[
+		frame:SetScript("OnKeyDown", function(self, key)
+			if key == "ESCAPE" then
+				self:SetPropagateKeyboardInput(false)
+				if self.cancel:IsShown() then
+					self.cancel:Click()
+				else -- Showing a validation error
+					self:Hide()
+				end
+			else
+				self:SetPropagateKeyboardInput(true)
+			end
+		end)
+
+]]--

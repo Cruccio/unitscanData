@@ -10,7 +10,6 @@ if GetLocale() == "koKR" then
              .. "\n\nUpdated for unitscan version: " .. UNIT_SCAN_DATA["unitscan_SUGGESTED_VERSION"];
     L["INFO_TEXT"] = text;
     L["NO_CHECKBOX_DATA"] = "No data for your current region: move to another area";
-
     L["Beast"] = "야수";
     L["Dragonkin"] = "용족";
     L["Demon"] = "악마";
@@ -20,7 +19,6 @@ if GetLocale() == "koKR" then
     L["Humanoid"] = "인간형";
     L["Critter"] = "동물";
     L["Mechanical"] = "기계";
-
     L["Dreamtracker"] = "꿈의추적자";
     L["Emerald Ooze"] = "에메랄드 수액괴물";
     L["Gammerita"] = "감메리타";

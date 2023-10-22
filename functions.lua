@@ -43,7 +43,7 @@ function drawGrid(CHECKBOX_GRID_STATE)
             allNonActive = false;
             if checkboxTable["cls"] == 2 then  colour = "ffc2c1c0" end
             if checkboxTable["cls"] == 4 then colour = "ff595d63" end
-            _G["MyCheckButton" .. i .. 'Text']:SetText("|c" .. colour .. checkboxTable["text"] .. "|r");
+            _G["MyCheckButton" .. i .. 'Text']:SetText("|c" .. colour .. L[checkboxTable["text"]] .. "|r");
             MyCheckButton:Show();
             MyCheckButton:SetChecked(checkboxTable["check"]);
         else
@@ -167,7 +167,7 @@ function autoscan_verifyConsistency(checkboxTable)
     local inList = false;
     for _, singleCheckbox in pairs(checkboxTable) do
         if singleCheckbox.active then
-            key = strupper(singleCheckbox.text);
+            key = strupper(L[singleCheckbox.text]);
             inList = unitscan_targets[key];
             if inList == nil then inList = false end  -- nil value does not work as a real false in next instructions
             if singleCheckbox.check ~= inList then
@@ -181,7 +181,7 @@ end
 -- make the unitscan scan list to match a specific unitscanData checkBox tracking status
 function unitscan_updateSingleCheckbox(singleCheckbox)
     if singleCheckbox.active then
-        local key = strupper(singleCheckbox.text);
+        local key = strupper(L[singleCheckbox.text]);
         local isInList = unitscan_targets[key];
         if isInList == nil then isInList = false end
         if singleCheckbox.check ~= isInList then
@@ -199,7 +199,7 @@ function unitscan_updateAllFromGrid(checkboxTable)
     local inList = false;
     for _, singleCheckbox in pairs(checkboxTable) do
         if singleCheckbox.active then
-            key = strupper(singleCheckbox.text);
+            key = strupper(L[singleCheckbox.text]);
             inList = unitscan_targets[key];
             if inList == nil then inList = false end  -- nil value does not work as a real false in next instructions
             if singleCheckbox.check ~= inList then unitscan_toggleTarget(key) end
@@ -214,7 +214,7 @@ function unitscan_removeAllFromGrid(checkboxTable)
     if checkboxTable == nil then return end
     for _, singleCheckbox in pairs(checkboxTable) do
         if singleCheckbox.active then
-            local key = strupper(singleCheckbox.text);
+            local key = strupper(L[singleCheckbox.text]);
             local inList = unitscan_targets[key];
             if inList == nil then inList = false end  -- nil value does not work as a real false in next instructions
             if inList then unitscan_toggleTarget(key) end

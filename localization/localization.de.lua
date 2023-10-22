@@ -19,8 +19,7 @@ if GetLocale() == "deDE" then
     L["Undead"] = "Untot";
     L["Humanoid"] = "Humanoid";
     L["Critter"] = "Tier";
-    L["Mechanical"] = "Mechanisch"
-
+    L["Mechanical"] = "Mechanisch";
     L["Dreamtracker"] = "Traumsucher";
     L["Emerald Ooze"] = "Smaragdgrüner Schlamm";
     L["Gammerita"] = "Gammerita";

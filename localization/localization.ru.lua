@@ -10,7 +10,6 @@ if GetLocale() == "ruRU" then
              .. "\n\nUpdated for unitscan version: " .. UNIT_SCAN_DATA["unitscan_SUGGESTED_VERSION"];
     L["INFO_TEXT"] = text;
     L["NO_CHECKBOX_DATA"] = "Нет данных для вашего текущего региона: перейдите в другую область.";
-
     L["Beast"] = "Животное";
     L["Dragonkin"] = "Драконид";
     L["Demon"] = "Демон";
@@ -20,7 +19,6 @@ if GetLocale() == "ruRU" then
     L["Humanoid"] = "Гуманоид";
     L["Critter"] = "Зверек";
     L["Mechanical"] = "Механизм";
-
     L["Dreamtracker"] = "Следопыт Снов";
     L["Emerald Ooze"] = "Изумрудный слизнюк";
     L["Gammerita"] = "Гаммерита";

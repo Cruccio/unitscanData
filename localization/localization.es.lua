@@ -10,7 +10,6 @@ if GetLocale() == "esES" then
              .. "\n\nUpdated for unitscan version: " .. UNIT_SCAN_DATA["unitscan_SUGGESTED_VERSION"];
     L["INFO_TEXT"] = text;
     L["NO_CHECKBOX_DATA"] = "No hay datos para tu región actual: muévete a otra región.";
-
     L["Beast"] = "Alimaña";
     L["Dragonkin"] = "Dragonante";
     L["Demon"] = "Demonio";
@@ -20,7 +19,6 @@ if GetLocale() == "esES" then
     L["Humanoid"] = "Humanoide";
     L["Critter"] = "Alimaña";
     L["Mechanical"] = "Mecánico";
-
     L["Dreamtracker"] = "Rastreasueños";
     L["Emerald Ooze"] = "Moco esmeralda";
     L["Gammerita"] = "Gammerita";

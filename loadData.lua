@@ -3,8 +3,8 @@ UNIT_SCAN_DATA = {}
 
 -- addons info
 UNIT_SCAN_DATA["unitscanData_DB_VERSION"] = "0.8"
-UNIT_SCAN_DATA["unitscanData_VERSION"] = "1.2.0"
-UNIT_SCAN_DATA["unitscan_SUGGESTED_VERSION"] = "v1.1.3 for 1.14.3"
+UNIT_SCAN_DATA["unitscanData_VERSION"] = "1.2.1"
+UNIT_SCAN_DATA["unitscan_SUGGESTED_VERSION"] = "v1.1.5 for 1.14.4"
 
 -- authors info
 UNIT_SCAN_DATA["unitscanData_AUTHOR"] = "Cruccio"

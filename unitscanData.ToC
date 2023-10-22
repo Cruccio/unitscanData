@@ -13,7 +13,6 @@ localization/localization.en.lua
 localization/localization.cn.lua
 localization/localization.es.lua
 localization/localization.fr.lua
-localization/localization.it.lua
 localization/localization.ko.lua
 localization/localization.pt.lua
 localization/localization.ru.lua

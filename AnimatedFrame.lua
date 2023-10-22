@@ -49,15 +49,15 @@ function update3DView(checkboxId)
         levelColor = COLOUR_RED
     end
     local text = {}
-    text[1] = "Reaction: |c" .. reaction[unit.react[2]] .. "H|r - |c" .. reaction[unit.react[1]] .. "A|r"
-    text[2] = "Level range: |c" .. levelColor .. "[" .. unit.minLvl .. "-" .. unit.maxLvl .. "]|r"
+    text[1] = L["Reaction: |c"] .. reaction[unit.react[2]] .. "H|r - |c" .. reaction[unit.react[1]] .. "A|r"
+    text[2] = L["Level range: |c"] .. levelColor .. "[" .. unit.minLvl .. "-" .. unit.maxLvl .. "]|r"
     if UnitLevel("player") < unit.maxLvl + 5 then text[2] = text[2] .. skull_markup end
-    text[3] = "Type: " .. classification[checkbox.cls]
-    text[4] = checkbox.text
+    text[3] = L["Type: "] .. classification[checkbox.cls]
+    text[4] = L[checkbox.text]
     text[5] = ""
     if unit.mana == nil then text[6] = "|c" .. COLOUR_BLUE .. "Mana: --|r" else text[6] = "|c" .. COLOUR_BLUE .. "Mana: " .. unit.mana .. "|r" end
     if unit.hp == nil then text[7] = "|c" .. COLOUR_GREEN .. "HP: ??|r" else text[7] = "|c" .. COLOUR_GREEN .. "HP: " .. unit.hp .. "|r"  end
-    text[8] = UNIT_TYPE[unit.typeId]
+    text[8] = L[UNIT_TYPE[unit.typeId]]
     -- rows starts from bottom -> row1 and 5 are the last one in the UI (row1 right, row5 left)
     for i=1, 8 do
         if text[i] == nil or text[i] == "" then
