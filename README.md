@@ -1,4 +1,4 @@
-# unitscanData - WoW 1.14 addOn 
+# unitscanData - WoW 1.15 addOn 
 Type **/unitscanData** in-game to show UI.<br/>
 (Or just create a macro for it: ```/script CreateMacro("unitscanData", "INV_MISC_QUESTIONMARK", "/unitscanData", nil);```)
 
