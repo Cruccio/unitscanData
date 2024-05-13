@@ -1,4 +1,4 @@
-## Interface: 11404
+## Interface: 11502
 ## Title: unitscanData
 ## Author: Cruccio
 ## Notes: To show UI type /unitscanData. Database and simple UI built on top of unitscan.

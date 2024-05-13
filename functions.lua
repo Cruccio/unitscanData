@@ -95,7 +95,7 @@ function toggleAllByClassification(classification)
     end
 end
 
--- toggle the the internal checkbox and units status to match the default one stored in the database.lua
+-- toggle the the internal checkbox and units status to match the default one stored in the database.old.lua
 -- a drawGrid() call to is needed after this function to visualize the new status
 function toggleToDefault()
     local zoneId = getPlayerZoneNameId();

@@ -33,6 +33,7 @@ if GetLocale() == "zhCN" then
     L["Qiaga the Keeper"] = "守护者奇尔加";
     L["Rothos"] = "洛索斯";
     L["Shadra"] = "沙德拉";
+    L["Teremus the Devourer"] = "吞噬者特雷姆斯";
     L["Vile Priestess Hexx"] = "邪恶祭司海克斯";
     L["Vilebranch Shadowcaster"] = "邪枝暗影法师";
     L["Vilebranch Raiding Wolf"] = "邪枝巨狼";

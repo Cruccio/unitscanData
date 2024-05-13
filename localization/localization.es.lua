@@ -31,6 +31,7 @@ if GetLocale() == "esES" then
     L["Qiaga the Keeper"] = "Qiaga la Vigilante";
     L["Rothos"] = "Rothos";
     L["Shadra"] = "Shadra";
+    L["Teremus the Devourer"] = "Teremus el Devorador";
     L["Vile Priestess Hexx"] = "Sacerdotisa vil Hexx";
     L["Vilebranch Shadowcaster"] = "Taumaturgo umbrío Vilrama";
     L["Vilebranch Raiding Wolf"] = "Lobo de asalto Vilrama";

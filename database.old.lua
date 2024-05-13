@@ -905,7 +905,6 @@ OUTPUT_TABLE["Blasted Lands"] = {
 	{active=true, text=L["Manahound"], check=true, id=8718, cls=1},
 	{active=true, text=L["Nethergarde Elite"], check=false, id=7851, cls=1},
 	{active=true, text=L["Razelikh the Defiler"], check=true, id=7664, cls=1},
-	{active=true, text=L["Teremus the Devourer"], check=true, id=7846, cls=1},
 	{active=true, text=L["Akubar the Seer"], check=false, id=8298, cls=4},
 	{active=true, text=L["Bone Witch"], check=false, id=16380, cls=4},
 	{active=true, text=L["Clack the Reaver"], check=false, id=8301, cls=4},
@@ -919,7 +918,7 @@ OUTPUT_TABLE["Blasted Lands"] = {
 	{active=true, text=L["Spiteflayer"], check=false, id=8299, cls=4},
 	{active=true, text=L["Spirit of the Damned"], check=false, id=16379, cls=4},
 }
-for i=27,75 do
+for i=26,75 do
 	table.insert(OUTPUT_TABLE["Blasted Lands"],  {active=false})
 end
 
@@ -1551,7 +1550,7 @@ BESTIARY = {
 	[14267]=T(3189, 19, 19, 1347, nil, 7, {-1, 0}), [8282]=T(7835, 51, 51, 5502, 3728, 7, {-1, -1}), [7895]=T(7043, 36, 36, 3150, 1097, 6, {-1, -1}), 
 	[1843]=T(10340, 62, 62, 9711, nil, 7, {-1, -1}), [6646]=T(10042, 53, 54, 7359, nil, 5, {-1, -1}), [1841]=T(10344, 60, 60, 9156, nil, 7, {-1, -1}), 
 	[14475]=T(12153, 57, 57, 8352, nil, 10, {-1, -1}), [14474]=T(14522, 59, 59, 8883, nil, 10, {-1, -1}), [1838]=T(10343, 61, 61, 9432, nil, 7, {-1, -1}), 
-	[2529]=T(1098, 24, 25, nil, nil, 7, {-1, -1}), [7846]=T(6378, 63, 63, 91560, nil, 2, {-1, -1}), 
+	[2529]=T(1098, 24, 25, nil, nil, 7, {-1, -1}), 
 }
 
 REGIONS_TABLE = {

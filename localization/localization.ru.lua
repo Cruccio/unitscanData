@@ -31,6 +31,7 @@ if GetLocale() == "ruRU" then
     L["Qiaga the Keeper"] = "Квиага Хранительница";
     L["Rothos"] = "Ротос";
     L["Shadra"] = "Шадра";
+    L["Teremus the Devourer"] = "Теремус Пожиратель";
     L["Vile Priestess Hexx"] = "Коварная жрица Ведьмиса";
     L["Vilebranch Shadowcaster"] = "Темный чародей из племени Порочной Ветви";
     L["Vilebranch Raiding Wolf"] = "Верховой волк Порочной Ветви";
@@ -311,13 +312,13 @@ if GetLocale() == "ruRU" then
     L["Silithid Ravager"] = "Кркк'кс";
     L["Blazerunner"] = "Яропламень";
     L["Baron Charr"] = "Барон Огнерр";
-    L["Devilsaur"] = "Дьявозавр";
-    L["Ironhide Devilsaur"] = "Железношкурый дьявозавр";
+    L["Devilsaur"] = "Девизавр";
+    L["Ironhide Devilsaur"] = "Железношкурый девизавр";
     L["Plated Stegodon"] = "Панцирный стегодон";
     L["Stegodon"] = "Стегодон";
     L["Spiked Stegodon"] = "Шипастый стегодон";
     L["Stone Guardian"] = "Каменный страж";
-    L["Tyrant Devilsaur"] = "Тиранодьявозавр";
+    L["Tyrant Devilsaur"] = "Тиранодевизавр";
     L["Thunderstomp Stegodon"] = "Громовой стегодон";
     L["Gruff"] = "Графф";
     L["King Mosh"] = "Король Мош";

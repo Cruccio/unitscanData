@@ -2,9 +2,9 @@
 UNIT_SCAN_DATA = {}
 
 -- addons info
-UNIT_SCAN_DATA["unitscanData_DB_VERSION"] = "0.8"
-UNIT_SCAN_DATA["unitscanData_VERSION"] = "1.2.1"
-UNIT_SCAN_DATA["unitscan_SUGGESTED_VERSION"] = "v1.1.5 for 1.14.4"
+UNIT_SCAN_DATA["unitscanData_DB_VERSION"] = "0.9"
+UNIT_SCAN_DATA["unitscanData_VERSION"] = "1.2.2"
+UNIT_SCAN_DATA["unitscan_SUGGESTED_VERSION"] = "v1.2.4 for WoW 1.15.1"
 
 -- authors info
 UNIT_SCAN_DATA["unitscanData_AUTHOR"] = "Cruccio"

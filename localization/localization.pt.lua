@@ -31,6 +31,7 @@ if GetLocale() == "ptBR" then
     L["Qiaga the Keeper"] = "Qiaga, a Guardiã";
     L["Rothos"] = "Rothos";
     L["Shadra"] = "Shadra";
+    L["Teremus the Devourer"] = "Teremus, o Devorador";
     L["Vile Priestess Hexx"] = "Sacerdotisa Torpe Bagata";
     L["Vilebranch Shadowcaster"] = "Lança-sombras Ramatorpe";
     L["Vilebranch Raiding Wolf"] = "Lobo Saqueador Ramatorpe";

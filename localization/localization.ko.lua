@@ -31,6 +31,7 @@ if GetLocale() == "koKR" then
     L["Qiaga the Keeper"] = "수호자 퀴아가";
     L["Rothos"] = "로소스";
     L["Shadra"] = "샤드라";
+    L["Teremus the Devourer"] = "파멸의 테레무스";
     L["Vile Priestess Hexx"] = "타락한 여사제 헥스";
     L["Vilebranch Shadowcaster"] = "썩은가지 흑마술사";
     L["Vilebranch Raiding Wolf"] = "길들인 썩은가지 늑대";
